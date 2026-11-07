@@ -1,3 +1,15 @@
+# ф-ия перемешивает данные на тренировочные, тестовые и тд
+from dataclasses import dataclass
+
+from sklearn.model_selection import train_test_split
+
+# собственно линейная регрессия
+from sklearn.linear_model import LinearRegression
+
+# оценка метрики
+from sklearn.metrics import mean_squared_error, r2_score
+import pandas as pd
+
 from grader_contracts.linear_models import (
     BaselineComparisonResult,
     ClassificationInput,
@@ -26,6 +38,7 @@ def Z_normalize(array):
 
 def train_linear_regression(data: RegressionInput) -> RegressionResult:
     """Обучите собственную линейную регрессию на train и верните прогноз для test."""
+<<<<<<< HEAD
     np.random.seed(777)
     features_train = Z_normalize(expand(data.train_features.to_numpy()))
     targets_train = Z_normalize(data.train_target.to_numpy())
@@ -44,7 +57,6 @@ def train_linear_regression(data: RegressionInput) -> RegressionResult:
         losses.append(loss.mean())
     preds = features_test @ weights
     return RegressionResult(weights[1:], weights[0], losses, preds)
-
 
 def minmax_normalize(array):
     return (array - array.min()) / (array.max() - array.min())
