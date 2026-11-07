@@ -38,7 +38,6 @@ def Z_normalize(array):
 
 def train_linear_regression(data: RegressionInput) -> RegressionResult:
     """Обучите собственную линейную регрессию на train и верните прогноз для test."""
-<<<<<<< HEAD
     np.random.seed(777)
     features_train = Z_normalize(expand(data.train_features.to_numpy()))
     targets_train = Z_normalize(data.train_target.to_numpy())
@@ -57,6 +56,7 @@ def train_linear_regression(data: RegressionInput) -> RegressionResult:
         losses.append(loss.mean())
     preds = features_test @ weights
     return RegressionResult(weights[1:], weights[0], losses, preds)
+
 
 def minmax_normalize(array):
     return (array - array.min()) / (array.max() - array.min())
